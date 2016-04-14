@@ -40,6 +40,8 @@ import 'package:args/command_runner.dart';
 import 'package:dev_compiler/src/compiler/command.dart';
 
 main(List<String> args) async {
+  args = _preprocessArgs(args);
+
   var runner = new CommandRunner('dartdevc', 'Dart Development Compiler');
   runner.addCommand(new CompileCommand());
   try {
@@ -74,5 +76,16 @@ main(List<String> args) async {
     print(e);
     print(s);
     print("```");
+  }
+}
+
+/// If the final arg is `@file_path` then read in all the lines of that file
+/// and add those as args.
+List<String> _preprocessArgs(List<String> args) {
+  if (args.last.startsWith('@')) {
+    return new List.from(args)
+      ..addAll(new File(args.last.substring(1)).readAsLinesSync());
+  } else {
+    return args;
   }
 }
