@@ -1,0 +1,12 @@
+<html>
+  <head>
+    <script src="packages/dev_compiler/runtime/dart_library.js"></script>
+    <script src="packages/dev_compiler/runtime/dart_sdk.js"></script>
+    <script src="hello_world.dart.dc.js"></script>
+    <script>
+       document.addEventListener("DOMContentLoaded", function(event) {
+         dart_library.start("hello_world", "hello_world");
+       });
+    </script>
+  </head>
+</html>
