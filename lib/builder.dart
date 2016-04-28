@@ -63,7 +63,10 @@ class DevCompilerBuilder extends Builder {
     var unit = new BuildUnit(inputId.package, inputs, _moduleForLibrary);
 
     JSModuleFile module = compiler.compile(unit, compilerOptions);
-    module.errors.forEach(buildStep.logger.severe);
+    module.errors.forEach((error) {
+      if (error.contains('[error]')) buildStep.logger.severe(error);
+      else buildStep.logger.warning(error);
+    });
 
     if (!module.isValid) throw new CompileErrorException();
 
