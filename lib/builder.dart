@@ -60,12 +60,15 @@ class DevCompilerBuilder extends Builder {
         .map((barback.AssetId id) => 'asset:${id.package}/${id.path}')
         .toList();
 
-    var unit = new BuildUnit(inputId.package, inputs, _moduleForLibrary);
+    var unit = new BuildUnit(
+        inputId.package, 'asset:${inputId.package}', inputs, _moduleForLibrary);
 
     JSModuleFile module = compiler.compile(unit, compilerOptions);
     module.errors.forEach((error) {
-      if (error.contains('[error]')) buildStep.logger.severe(error);
-      else buildStep.logger.warning(error);
+      if (error.contains('[error]'))
+        buildStep.logger.severe(error);
+      else
+        buildStep.logger.warning(error);
     });
 
     if (!module.isValid) throw new CompileErrorException();
