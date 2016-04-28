@@ -13,7 +13,7 @@ dependencies:
   args: ^0.13.0
   barback: ^0.15.2
   bazel_worker: ^0.1.0
-  build: ^0.2.0
+  build: ^0.3.0
   cli_util: ^0.0.1
   func: ^0.1.0
   html: ^0.12.0
@@ -26,9 +26,6 @@ dependencies:
 dependency_overrides:
   angular2:
     path: ../angular2_clone
-  build:
-    path: ../build
-  crypto: ^1.0.0
 
 dev_dependencies:
   # We pin a specific version to ensure everyone is formatting the code exactly
