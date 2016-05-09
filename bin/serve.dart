@@ -11,7 +11,8 @@ import 'package:dev_compiler/builder.dart';
 import 'package:dev_compiler/src/compiler/compiler.dart';
 
 Future main() async {
-  var compilerOptions = new CompilerOptions(summarizeApi: false, unsafeForceCompile: true);
+  var compilerOptions =
+      new CompilerOptions(summarizeApi: false, unsafeForceCompile: true);
 
   var phases = new PhaseGroup();
   var phase = phases.newPhase();
